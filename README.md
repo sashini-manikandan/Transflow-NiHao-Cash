@@ -1,7 +1,7 @@
 # Transflow-NiHao-Cash
 An agentic financial copilot built for international students. The system integrates domestic transaction parsing, subscription lifecycle management, predictive cash flow forecasting, and cross-border remittance/FX optimization into a single privacy-centric workflow.
 =======
-# BillWise AI
+# Tran$Flow
 
 An AI-powered financial obligations assistant for international students: it finds
 the recurring payments hiding in a transaction history, forecasts whether the next
