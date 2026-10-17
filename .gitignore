@@ -1,0 +1,30 @@
+# --- Secrets --------------------------------------------------------------
+# Only the .env.example templates belong in version control.
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# --- Python ---------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Local database and logs ----------------------------------------------
+*.db
+*.sqlite3
+*.log
+
+# --- Node / frontend ------------------------------------------------------
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+
+# --- Editors and OS -------------------------------------------------------
+.DS_Store
+Thumbs.db

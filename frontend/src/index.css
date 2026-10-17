@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    background-image: theme('backgroundImage.atmosphere');
+    background-attachment: fixed;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  h1,
+  h2 {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-canvas;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full border-2 border-solid border-transparent bg-surface-3 bg-clip-padding;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-line;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line/90 bg-surface/90 shadow-panel backdrop-blur-[2px];
+  }
+
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+
+  .label-xs {
+    @apply text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-faint;
+  }
+
+  .page-title {
+    @apply font-display text-[1.85rem] leading-[1.15] text-ink sm:text-[2.15rem];
+  }
+
+  .page-lede {
+    @apply mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-[0.95rem];
+  }
+
+  .num {
+    @apply font-sans tabular-nums tracking-tight;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-surface-2;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.035) 50%,
+      transparent 100%
+    );
+    background-size: 500px 100%;
+    background-repeat: no-repeat;
+    @apply animate-shimmer;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2
+           text-sm font-semibold transition duration-150 disabled:cursor-not-allowed
+           disabled:opacity-40;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-canvas hover:brightness-110 active:brightness-95;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line bg-transparent text-ink hover:bg-surface-2;
+  }
+
+  .btn-danger {
+    @apply btn border border-rose/35 bg-rose/10 text-rose hover:bg-rose/15;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-line bg-surface-2 px-3.5 py-2.5 text-sm
+           text-ink placeholder:text-ink-faint;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium
+           text-ink-muted transition-colors hover:bg-surface-2 hover:text-ink;
+  }
+
+  .nav-link-active {
+    @apply bg-accent-dim text-accent;
+  }
+}
+
+/* Light marketing pages sit beside the dark product shell. */
+.landing-shell {
+  color-scheme: light;
+}
