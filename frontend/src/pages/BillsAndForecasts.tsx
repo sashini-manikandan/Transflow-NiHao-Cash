@@ -62,10 +62,8 @@ export default function BillsAndForecasts() {
 
   return (
     <div className="space-y-8">
-      <PageHeader
-        title="Bills & forecast"
-        lede="Confirmed bills and projected charges against expected income — so you can see whether each obligation is covered."
-      >
+      <PageHeader title="Bills & forecast" lede="Confirmed bills against projected cash.">
+
         <label className="flex items-center gap-2 text-xs text-ink-muted">
           <input
             type="checkbox"
@@ -125,7 +123,7 @@ export default function BillsAndForecasts() {
           sublabel={
             f?.shortfall_detected
               ? `first on ${longDate(f.first_shortfall_date)}`
-              : 'Balance stays positive across the horizon'
+              : 'No shortfall in range'
           }
           basis="estimate"
           tone={f?.shortfall_detected ? 'bad' : 'good'}
@@ -135,23 +133,13 @@ export default function BillsAndForecasts() {
       {f?.shortfall_detected && (
         <div role="alert" className="card card-pad border-rose/30 bg-rose/5">
           <h2 className="text-sm font-semibold text-rose">
-            You are projected to run short on {longDate(f.first_shortfall_date)}
+            Shortfall on {longDate(f.first_shortfall_date)} · low{' '}
+            {money(f.minimum_balance, currency)}
           </h2>
-          <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-ink-muted">
-            The projection dips to {money(f.minimum_balance, currency)} on{' '}
-            {longDate(f.minimum_balance_date)}, a gap of{' '}
-            {money(f.largest_shortfall, currency)}. This combines confirmed bills with
-            projected subscription charges, so the exact date can move if a subscription
-            bills earlier or later than its usual day.
-          </p>
         </div>
       )}
 
-      <Card
-        title="Balance projection"
-        subtitle="Line is the running balance. Bars show money in and out on each day."
-        action={<BasisTag basis="estimate" />}
-      >
+      <Card title="Balance projection" action={<BasisTag basis="estimate" />}>
         {forecast.loading && !f && <LoadingPanel label="Projecting balance" />}
         {forecast.error && (
           <ErrorPanel message={forecast.error} onRetry={forecast.reload} />
@@ -251,7 +239,7 @@ export default function BillsAndForecasts() {
         <Card
           className="xl:col-span-2"
           title="Upcoming bills"
-          subtitle={`Confirmed obligations in the next ${horizon} days.`}
+          subtitle={`Next ${horizon} days`}
           action={<BasisTag basis="calculated" />}
         >
           {bills.data.count === 0 ? (
@@ -305,7 +293,6 @@ export default function BillsAndForecasts() {
 
         <Card
           title="Where the money sits"
-          subtitle="Opening position by account."
           action={<BasisTag basis="calculated" />}
         >
           {!f ? (
@@ -481,7 +468,7 @@ function AddBillCard({ onCreated }: { onCreated: () => void }) {
   return (
     <Card
       title="Track another bill"
-      subtitle="Add an obligation the statement does not show yet, such as a fee you have been told about."
+      subtitle="Add a bill not yet on the statement."
     >
       <form onSubmit={submit} className="grid gap-3 sm:grid-cols-5">
         <div className="sm:col-span-2">

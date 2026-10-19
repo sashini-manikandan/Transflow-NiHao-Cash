@@ -1,0 +1,8 @@
+{
+  "status": "ok",
+  "environment": "development",
+  "assistant_mode": "llm",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "demo_data": true
+}

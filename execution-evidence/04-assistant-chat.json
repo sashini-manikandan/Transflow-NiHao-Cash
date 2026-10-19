@@ -1,0 +1,86 @@
+{
+  "answer": "You will not be able to afford your tuition installment next month. Here are the details:\n\n### Upcoming Bills\n- **Tuition Installment (3 of 4)**: AED 9,800 due on **November 1, 2026**.\n- **Total Upcoming Bills**: AED 13,657.19 due within the next 30 days.\n\n### Balance Forecast\n- **Opening Balance**: AED 6,979.14\n- **Total Projected Inflow**: AED 4,900.00\n- **Total Projected Outflow**: AED 15,595.30\n- **Projected Closing Balance**: AED -3,716.16 (indicating a shortfall)\n- **First Shortfall Date**: November 1, 2026 (the same day as your tuition installment)\n\n### Summary\nYou will face a shortfall of AED 3,716.16 by November 1, 2026, which means you won't be able to cover your tuition installment. You may need to consider options such as delaying other payments or finding additional funds.",
+  "mode": "llm",
+  "model": "openai/gpt-4o-mini",
+  "tool_calls": [
+    {
+      "tool": "get_upcoming_bills",
+      "arguments": {
+        "days_ahead": 30
+      },
+      "status": "ok",
+      "duration_ms": 36,
+      "summary": "Total due: AED 13657.19",
+      "error": null
+    },
+    {
+      "tool": "forecast_balance",
+      "arguments": {
+        "horizon_days": 30
+      },
+      "status": "ok",
+      "duration_ms": 109,
+      "summary": "Opening balance: AED 6979.14",
+      "error": null
+    }
+  ],
+  "facts": [
+    {
+      "label": "Total due",
+      "value": 13657.19,
+      "currency": "AED",
+      "basis": "calculated",
+      "period": "next 30 days",
+      "confidence": null,
+      "note": ""
+    },
+    {
+      "label": "Bill count",
+      "value": 5,
+      "currency": null,
+      "basis": "calculated",
+      "period": "next 30 days",
+      "confidence": null,
+      "note": ""
+    },
+    {
+      "label": "Opening balance",
+      "value": 6979.14,
+      "currency": "AED",
+      "basis": "calculated",
+      "period": null,
+      "confidence": null,
+      "note": ""
+    },
+    {
+      "label": "Projected closing balance",
+      "value": -3716.16,
+      "currency": "AED",
+      "basis": "estimate",
+      "period": "2026-10-19 to 2026-11-18",
+      "confidence": null,
+      "note": ""
+    },
+    {
+      "label": "Lowest projected balance",
+      "value": -3716.16,
+      "currency": "AED",
+      "basis": "estimate",
+      "period": "on 2026-11-17",
+      "confidence": null,
+      "note": ""
+    },
+    {
+      "label": "Projected shortfall",
+      "value": 3716.16,
+      "currency": "AED",
+      "basis": "estimate",
+      "period": "first on 2026-11-01",
+      "confidence": null,
+      "note": "Balance is projected to go negative."
+    }
+  ],
+  "iterations": 2,
+  "truncated": false,
+  "disclaimer": "BillWise AI works from synthetic demo data and simulated exchange rates. It is not financial advice, and no real account is connected."
+}

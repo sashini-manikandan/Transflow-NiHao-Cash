@@ -67,9 +67,7 @@ describe('Dashboard', () => {
       screen.getByText(/cancel the duplicate netflix subscription/i),
     ).toBeInTheDocument()
     expect(screen.getAllByText(/matches a stated priority/i).length).toBe(2)
-    expect(
-      screen.getAllByText(/needs your approval before anything happens/i).length,
-    ).toBeGreaterThan(0)
+    expect(screen.getAllByText(/needs your approval/i).length).toBeGreaterThan(0)
   })
 
   it('surfaces an error with a retry affordance when the API fails', async () => {

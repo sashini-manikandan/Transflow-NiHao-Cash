@@ -26,12 +26,12 @@ export function Card({
         <header className="mb-5 flex items-start justify-between gap-4 border-b border-line/70 pb-4">
           <div className="min-w-0">
             {title && (
-              <h2 className="font-display text-xl leading-snug text-ink sm:text-[1.35rem]">
+              <h2 className="font-display text-[1.35rem] leading-snug text-ink sm:text-[1.5rem]">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{subtitle}</p>
+              <p className="mt-1.5 text-[0.95rem] leading-relaxed text-ink-muted">{subtitle}</p>
             )}
           </div>
           {action && <div className="shrink-0 pt-1">{action}</div>}
@@ -73,7 +73,7 @@ export function BasisTag({ basis, className = '' }: { basis: Basis; className?: 
   return (
     <span
       title={style.title}
-      className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[10px]
+      className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[11px]
                   font-semibold uppercase tracking-[0.08em] ${style.className} ${className}`}
     >
       {style.label}
@@ -93,7 +93,7 @@ const VERDICT_STYLE: Record<string, string> = {
 export function VerdictBadge({ verdict }: { verdict: string }) {
   return (
     <span
-      className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[11px]
+      className={`inline-flex items-center rounded border px-1.5 py-0.5 text-xs
                   font-medium ${VERDICT_STYLE[verdict] ?? VERDICT_STYLE.informational}`}
     >
       {VERDICT_LABEL[verdict] ?? verdict}
@@ -147,7 +147,7 @@ export function Pill({
   }
   return (
     <span
-      className={`inline-flex items-center rounded border px-1.5 py-0.5 text-[11px]
+      className={`inline-flex items-center rounded border px-1.5 py-0.5 text-xs
                   font-medium ${tones[tone]}`}
     >
       {children}
@@ -254,11 +254,11 @@ export function StatCard({
         <span className="label-xs">{label}</span>
         {basis && <BasisTag basis={basis} />}
       </div>
-      <p className={`num mt-3 pl-2 text-[1.65rem] font-semibold leading-none sm:text-[1.85rem] ${valueTone}`}>
+      <p className={`num mt-3 pl-2 text-[1.85rem] font-semibold leading-none sm:text-[2.05rem] ${valueTone}`}>
         {value}
       </p>
-      {sublabel && <p className="mt-2 pl-2 text-sm text-ink-muted">{sublabel}</p>}
-      {note && <p className="mt-2 pl-2 text-xs leading-relaxed text-ink-faint">{note}</p>}
+      {sublabel && <p className="mt-2 pl-2 text-[0.95rem] text-ink-muted">{sublabel}</p>}
+      {note && <p className="mt-2 pl-2 text-sm leading-relaxed text-ink-faint">{note}</p>}
       {footer && <div className="mt-3 pl-2">{footer}</div>}
     </div>
   )
@@ -276,7 +276,7 @@ export function EvidenceDisclosure({
   return (
     <details className="group mt-3">
       <summary
-        className="cursor-pointer list-none text-xs font-semibold text-accent
+        className="cursor-pointer list-none text-sm font-semibold text-accent
                    hover:underline focus-visible:underline"
       >
         <span className="group-open:hidden">Show {summary}</span>
@@ -287,13 +287,12 @@ export function EvidenceDisclosure({
   )
 }
 
-export function DemoDataBanner({ label }: { label: string }) {
+export function DemoDataBanner({ label }: { label?: string }) {
   return (
-    <div className="flex items-start gap-3 border-l-2 border-amber/60 bg-amber/[0.06] px-4 py-3 text-xs leading-relaxed text-mist">
-      <p>
-        <span className="font-semibold text-amber">Demo data. </span>
-        {label}
-      </p>
-    </div>
+    <p className="text-xs text-ink-faint">
+      <span className="font-medium text-mist">Demo</span>
+      {' · '}
+      {label?.trim() || 'Synthetic data · not a live bank connection'}
+    </p>
   )
 }

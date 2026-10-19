@@ -1,0 +1,25 @@
+﻿---
+pid: 5160
+cwd: "c:\\Users\\pc\\OneDrive\\Documents\\NYUAD\\Shenzhen_winners\\backend"
+command: ".\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --port 8000"
+title: "Start FastAPI backend on port 8000"
+status: running  
+started_at: 2026-10-19T09:42:12.166Z
+running_for_ms: 3320928  
+---
+INFO:     Will watch for changes in these directories: ['C:\\Users\\pc\\OneDrive\\Documents\\NYUAD\\Shenzhen_winners\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27500] using WatchFiles
+INFO:     Started server process [10884]
+INFO:     Waiting for application startup.
+2026-10-19 13:42:22,346 INFO billwise startup seed: already present
+2026-10-19 13:42:22,347 INFO billwise assistant mode: llm
+INFO:     Application startup complete.
+INFO:     127.0.0.1:12696 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:22112 - "GET /json/version HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60426 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53308 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53308 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42115 - "GET /api/personas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3907 - "GET /api/personas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:19883 - "GET /api/personas HTTP/1.1" 200 OK

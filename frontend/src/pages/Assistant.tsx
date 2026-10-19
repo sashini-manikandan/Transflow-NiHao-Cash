@@ -30,7 +30,6 @@ export default function Assistant() {
   const endRef = useRef<HTMLDivElement>(null)
 
   const suggestions = useApi(() => api.suggestions(), [])
-  const tools = useApi(() => api.agentTools(), [])
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
@@ -79,23 +78,12 @@ export default function Assistant() {
     }
   }
 
-  const mode = tools.data?.mode
-
   return (
     <div className="grid gap-6 xl:grid-cols-3">
       <div className="flex min-h-[70vh] flex-col xl:col-span-2">
-        <PageHeader
-          title="Assistant"
-          lede="Ask about obligations. Every figure comes from a backend tool — shown under each reply. The model never does the arithmetic."
-        />
+        <PageHeader title="Assistant" lede="Ask about bills, subscriptions, forecasts, or FX." />
 
-        <DemoDataBanner
-          label={
-            mode === 'llm'
-              ? 'Answers are written by a language model from backend tool results, over synthetic demo data. Not financial advice.'
-              : 'No model API key is configured, so replies are assembled directly from backend calculations. Clearly marked as such on each reply.'
-          }
-        />
+        <DemoDataBanner label="Synthetic data · not financial advice." />
 
         <div className="card mt-4 flex min-h-0 flex-1 flex-col">
           <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-5">
@@ -138,17 +126,27 @@ export default function Assistant() {
             )}
 
             {busy && (
-              <div className="flex items-center gap-2 text-sm text-ink-muted">
-                <span className="flex gap-1" aria-hidden="true">
-                  {[0, 1, 2].map((index) => (
-                    <span
-                      key={index}
-                      className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"
-                      style={{ animationDelay: `${index * 160}ms` }}
-                    />
-                  ))}
+              <div className="flex items-center gap-2.5 text-sm text-ink-muted">
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full
+                             bg-accent-dim text-accent animate-pulse"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4"
+                  >
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21" />
+                    <path d="m5.6 5.6 1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8" />
+                  </svg>
                 </span>
-                <span role="status">Running backend tools…</span>
+                <span role="status">BillWise AI is thinking…</span>
               </div>
             )}
             <div ref={endRef} />
@@ -180,76 +178,42 @@ export default function Assistant() {
               </button>
             </div>
             <p className="mt-2 text-[11px] text-ink-faint">
-              Never share bank passwords, PINs or card security codes. BillWise does not
-              ask for them and cannot move money.
+              Never share bank passwords or card details. BillWise cannot move money.
             </p>
           </form>
         </div>
       </div>
 
       <aside className="space-y-6">
-        <Card
-          title="What the assistant can call"
-          subtitle="A fixed allowlist. Anything outside it is refused before it runs."
-        >
-          {tools.loading && <Skeleton className="h-40" />}
-          {tools.data && (
-            <>
-              <ul className="space-y-2.5">
-                {tools.data.tools.map((tool) => (
-                  <li key={tool.name} className="rounded-xl border border-line bg-surface-2/50 p-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <code className="text-xs font-semibold text-accent">{tool.name}</code>
-                      {tool.mutates_state && <Pill tone="warn">Needs approval</Pill>}
-                    </div>
-                    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
-                      {tool.description}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-              <ul className="mt-4 space-y-1.5 border-t border-line pt-3 text-[11px] leading-relaxed text-ink-faint">
-                {tools.data.notes.map((note) => (
-                  <li key={note}>• {note}</li>
-                ))}
-                <li>
-                  • Up to {tools.data.max_tool_iterations} tool rounds per question, then
-                  the assistant must answer with what it has.
-                </li>
-              </ul>
-            </>
-          )}
+        <Card title="How BillWise AI works">
+          <ul className="space-y-2.5 text-sm leading-relaxed text-ink-muted">
+            <li>
+              Uses a <span className="text-ink">fixed tool set</span> — not free database
+              access.
+            </li>
+            <li>
+              <span className="text-ink">Numbers come from those tools</span>, not model
+              arithmetic.
+            </li>
+            <li>
+              Actions stay as <span className="text-ink">drafts until you confirm</span>.
+            </li>
+          </ul>
         </Card>
 
-        <Card
-          title="How to read the answers"
-          subtitle="The assistant separates these three things, and so does this interface."
-        >
+        <Card title="Tags">
           <dl className="space-y-3 text-xs leading-relaxed">
-            <div>
-              <dt>
-                <BasisTag basis="calculated" />
-              </dt>
-              <dd className="mt-1.5 text-ink-muted">
-                A confirmed figure: a billed amount, a due date, a past transaction.
-              </dd>
+            <div className="flex items-center gap-2">
+              <BasisTag basis="calculated" />
+              <dd className="text-ink-muted">Confirmed</dd>
             </div>
-            <div>
-              <dt>
-                <BasisTag basis="estimate" />
-              </dt>
-              <dd className="mt-1.5 text-ink-muted">
-                A projection, a normalised monthly total, or anything converted between
-                currencies. Depends on stated assumptions.
-              </dd>
+            <div className="flex items-center gap-2">
+              <BasisTag basis="estimate" />
+              <dd className="text-ink-muted">Projection / FX</dd>
             </div>
-            <div>
-              <dt>
-                <BasisTag basis="suggestion" />
-              </dt>
-              <dd className="mt-1.5 text-ink-muted">
-                Something to review. Nothing is actioned without your explicit approval.
-              </dd>
+            <div className="flex items-center gap-2">
+              <BasisTag basis="suggestion" />
+              <dd className="text-ink-muted">Needs your OK</dd>
             </div>
           </dl>
         </Card>
@@ -292,7 +256,7 @@ function AssistantMessage({ message }: { message: Message }) {
 
         {response && response.facts.length > 0 && (
           <div className="rounded-xl border border-line bg-surface p-3">
-            <p className="label-xs mb-2.5">Figures behind this answer</p>
+            <p className="label-xs mb-2.5">Figures used</p>
             <ul className="grid gap-2 sm:grid-cols-2">
               {response.facts.map((fact, index) => (
                 <FactChip key={`${fact.label}-${index}`} fact={fact} />
@@ -302,19 +266,13 @@ function AssistantMessage({ message }: { message: Message }) {
         )}
 
         {response && response.tool_calls.length > 0 && (
-          <EvidenceDisclosure summary="the backend calls behind this answer">
+          <EvidenceDisclosure summary="how this was calculated">
             <ul className="space-y-2">
               {response.tool_calls.map((call, index) => (
                 <ToolTraceRow key={`${call.tool}-${index}`} call={call} />
               ))}
             </ul>
           </EvidenceDisclosure>
-        )}
-
-        {response && (
-          <p className="text-[11px] leading-relaxed text-ink-faint">
-            {response.disclaimer}
-          </p>
         )}
       </div>
     </div>

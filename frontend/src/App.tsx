@@ -109,10 +109,12 @@ function AppShell() {
                     lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 lg:self-start
                     ${navOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <div className="px-5 pb-2 pt-6">
-          <p className="font-display text-[1.65rem] leading-none text-ink">BillWise</p>
-          <p className="mt-1.5 text-[11px] leading-snug text-ink-faint">
-            Obligations for students abroad
+        <div className="px-5 pb-3 pt-6">
+          <p className="font-display text-[1.9rem] leading-none tracking-[-0.02em] text-ink">
+            BillWise
+          </p>
+          <p className="mt-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent/85">
+            Student finance abroad
           </p>
         </div>
 
@@ -145,7 +147,7 @@ function AppShell() {
             <label className="block space-y-1.5">
               <span className="label-xs">Demo student</span>
               <select
-                className="input py-2 text-xs"
+                className="input py-2 text-sm"
                 value={personaEmail}
                 onChange={(event) => switchPersona(event.target.value)}
                 aria-label="Switch demo student persona"
@@ -157,7 +159,7 @@ function AppShell() {
                 ))}
               </select>
               {activePersona && (
-                <p className="text-[11px] leading-relaxed text-ink-faint">
+                <p className="text-xs leading-relaxed text-ink-faint">
                   {activePersona.tagline}
                 </p>
               )}
@@ -167,7 +169,7 @@ function AppShell() {
           {profile.data && (
             <div className="border-t border-line/60 pt-3">
               <p className="truncate text-sm font-medium text-ink">{profile.data.full_name}</p>
-              <p className="mt-0.5 text-[11px] text-ink-faint">
+              <p className="mt-0.5 text-xs text-ink-faint">
                 {profile.data.home_country} → {profile.data.study_country}
               </p>
             </div>
@@ -176,7 +178,7 @@ function AppShell() {
           <button
             type="button"
             onClick={leaveDemo}
-            className="btn-ghost w-full justify-start px-3 py-2 text-xs font-medium text-ink-muted"
+            className="btn-ghost w-full justify-start px-3 py-2 text-sm font-medium text-ink-muted"
           >
             Leave demo
           </button>

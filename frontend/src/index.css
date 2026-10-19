@@ -13,8 +13,12 @@
     height: 100%;
   }
 
+  html {
+    font-size: 17px;
+  }
+
   body {
-    @apply bg-canvas text-ink font-sans antialiased;
+    @apply bg-canvas text-ink font-sans text-[15px] leading-relaxed antialiased sm:text-base;
     background-image: theme('backgroundImage.atmosphere');
     background-attachment: fixed;
     font-feature-settings: 'ss01', 'cv11';
@@ -56,15 +60,15 @@
   }
 
   .label-xs {
-    @apply text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-faint;
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-faint;
   }
 
   .page-title {
-    @apply font-display text-[1.85rem] leading-[1.15] text-ink sm:text-[2.15rem];
+    @apply font-display text-[2.05rem] leading-[1.15] text-ink sm:text-[2.35rem];
   }
 
   .page-lede {
-    @apply mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-[0.95rem];
+    @apply mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-ink-muted sm:text-base;
   }
 
   .num {
@@ -85,8 +89,8 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2
-           text-sm font-semibold transition duration-150 disabled:cursor-not-allowed
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2.5
+           text-[0.95rem] font-semibold transition duration-150 disabled:cursor-not-allowed
            disabled:opacity-40;
   }
 
@@ -103,12 +107,12 @@
   }
 
   .input {
-    @apply w-full rounded-lg border border-line bg-surface-2 px-3.5 py-2.5 text-sm
+    @apply w-full rounded-lg border border-line bg-surface-2 px-3.5 py-2.5 text-[0.95rem]
            text-ink placeholder:text-ink-faint;
   }
 
   .nav-link {
-    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium
+    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-[0.95rem] font-medium
            text-ink-muted transition-colors hover:bg-surface-2 hover:text-ink;
   }
 

@@ -30,8 +30,7 @@ export default function Subscriptions() {
   if (analysis.error) return <ErrorPanel message={analysis.error} onRetry={analysis.reload} />
   if (!analysis.data) return null
 
-  const { summary, subscriptions, duplicate_findings, methodology, base_currency } =
-    analysis.data
+  const { summary, subscriptions, duplicate_findings, base_currency } = analysis.data
 
   const filtered = subscriptions.filter((sub) => {
     if (filter === 'all') return true
@@ -49,10 +48,7 @@ export default function Subscriptions() {
 
   return (
     <div className="space-y-8">
-      <PageHeader
-        title="Subscriptions"
-        lede="Recurring charges inferred from history — each series shows the evidence and how confident the detection is."
-      />
+      <PageHeader title="Subscriptions" lede="Recurring charges detected from history." />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
@@ -85,7 +81,6 @@ export default function Subscriptions() {
       {duplicate_findings.length > 0 && (
         <Card
           title="Duplicates and overlaps"
-          subtitle="Grouped by what the signal actually means. Only the first group is treated as a probable mistake."
         >
           <ul className="space-y-3">
             {duplicate_findings.map((finding, index) => (
@@ -102,7 +97,6 @@ export default function Subscriptions() {
 
       <Card
         title="Detected recurring payments"
-        subtitle={methodology}
         action={
           <div
             className="flex flex-wrap gap-1 rounded-xl border border-line bg-surface-2 p-1"

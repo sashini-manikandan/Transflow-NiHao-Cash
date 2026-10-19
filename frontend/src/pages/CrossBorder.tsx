@@ -56,7 +56,7 @@ export default function CrossBorder() {
     <div className="space-y-8">
       <PageHeader
         title="Cross-border"
-        lede="Amounts stay in the currency they happened in. Reporting figures use a dated rate, shown beside every conversion."
+        lede="Foreign spend with dated conversion rates."
       >
         <div
           className="flex items-center gap-0.5 rounded-lg border border-line/80 bg-surface/80 p-1"
@@ -79,36 +79,34 @@ export default function CrossBorder() {
         </div>
       </PageHeader>
 
-      <DemoDataBanner label="All exchange rates in this demo are simulated and labelled as such. They are not live market quotes." />
+      <DemoDataBanner label="Exchange rates are simulated — not live quotes." />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
           label="Foreign-currency spend"
           value={money(a.summary.foreign_currency_spend_base, base)}
-          sublabel={`over ${months} months`}
+          sublabel={`${months} months`}
           basis="estimate"
-          note="Converted with dated simulated rates."
         />
         <StatCard
           label="Monthly average"
           value={money(a.summary.foreign_spend_monthly_average_base, base)}
-          sublabel="foreign-currency outflow"
+          sublabel="foreign outflow"
           basis="estimate"
         />
         <StatCard
           label="Disclosed transfer fees"
           value={money(a.summary.disclosed_fees_base, base)}
-          sublabel={`${a.summary.disclosed_fee_transaction_count} transfers with a stated fee`}
+          sublabel={`${a.summary.disclosed_fee_transaction_count} transfers`}
           basis="calculated"
           tone="warn"
         />
         <StatCard
           label="Could not convert"
           value={String(a.summary.unconvertible_transaction_count)}
-          sublabel="transactions with no stored rate"
+          sublabel="missing rate"
           basis="calculated"
           tone={a.summary.unconvertible_transaction_count > 0 ? 'warn' : 'good'}
-          note="Left out of totals rather than estimated."
         />
       </div>
 
@@ -118,7 +116,6 @@ export default function CrossBorder() {
         <Card
           className="xl:col-span-3"
           title="Spending by currency"
-          subtitle="Each row shows the exact rate, date and source used for the conversion."
           action={<BasisTag basis="calculated" />}
         >
           {a.by_currency.length === 0 ? (
@@ -207,7 +204,6 @@ export default function CrossBorder() {
         <Card
           className="xl:col-span-2"
           title="Share of foreign spend"
-          subtitle="Converted amounts only."
           action={<BasisTag basis="estimate" />}
         >
           {foreign.length === 0 ? (
@@ -268,7 +264,6 @@ export default function CrossBorder() {
         <Card
           className="xl:col-span-3"
           title="Rate history"
-          subtitle="The exact stored rates this app used, so any figure can be traced back."
           action={
             <select
               className="input w-28 py-1.5 text-xs"
@@ -329,16 +324,14 @@ export default function CrossBorder() {
             </div>
           )}
           <p className="mt-2 text-[11px] text-ink-faint">
-            {rates.data?.all_rates_simulated
-              ? 'Every rate shown is simulated demo data.'
-              : 'Mixed rate sources.'}
+            {rates.data?.all_rates_simulated ? 'Simulated demo rates.' : 'Mixed rate sources.'}
           </p>
         </Card>
 
         <Card
           className="xl:col-span-2"
           title="Rate sensitivity"
-          subtitle="A what-if on past spending, not a prediction of future rates."
+          subtitle="What-if on past spend"
           action={<BasisTag basis="estimate" />}
         >
           <ul className="space-y-2.5">
@@ -407,10 +400,10 @@ function ImportCard({ onImported }: { onImported: () => void }) {
   return (
     <Card
       title="Import transactions"
-      subtitle="Upload a CSV with date, description, amount and currency columns. Rows that fail validation are reported individually; the rest still import."
+      subtitle="CSV: date, description, amount, currency"
       action={
         <a href={api.sampleCsvUrl} download="billwise-sample.csv" className="btn-ghost text-xs">
-          Download sample CSV
+          Sample CSV
         </a>
       }
     >
@@ -423,9 +416,7 @@ function ImportCard({ onImported }: { onImported: () => void }) {
         <span className="text-sm font-medium text-ink">
           {busy ? 'Importing…' : 'Choose a CSV file'}
         </span>
-        <span className="mt-1 text-xs text-ink-faint">
-          Up to 2 MB and 2,000 rows. Descriptions are stored as text only.
-        </span>
+        <span className="mt-1 text-xs text-ink-faint">Up to 2 MB · 2,000 rows</span>
         <input
           id="csv-input"
           type="file"
@@ -499,7 +490,7 @@ function RemittanceSimPanel({ baseCurrency }: { baseCurrency: string }) {
   return (
     <Card
       title="Remittance route simulation"
-      subtitle="Compare a traditional remittance rail with a USDC stablecoin path. Neither route executes a transfer."
+      subtitle="Traditional vs USDC — demo only"
       action={<BasisTag basis="estimate" />}
     >
       <form

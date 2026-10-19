@@ -1,0 +1,43 @@
+{
+  "id": 1,
+  "email": "amina@demo.billwise.ai",
+  "full_name": "Amina Osei",
+  "base_currency": "AED",
+  "home_country": "Ghana",
+  "study_country": "United Arab Emirates",
+  "priorities": [
+    "avoid overdraft",
+    "cut streaming costs",
+    "send money home cheaply"
+  ],
+  "accounts": [
+    {
+      "id": 1,
+      "name": "Everyday Account",
+      "institution": "ADCB (demo)",
+      "account_type": "checking",
+      "currency": "AED",
+      "current_balance": "3480.5000",
+      "is_synthetic": true
+    },
+    {
+      "id": 2,
+      "name": "USD Study Card",
+      "institution": "ADCB (demo)",
+      "account_type": "card",
+      "currency": "USD",
+      "current_balance": "612.4000",
+      "is_synthetic": true
+    },
+    {
+      "id": 3,
+      "name": "Home Account (Accra)",
+      "institution": "GCB Bank (demo)",
+      "account_type": "savings",
+      "currency": "GHS",
+      "current_balance": "5240.0000",
+      "is_synthetic": true
+    }
+  ],
+  "is_demo_data": true
+}

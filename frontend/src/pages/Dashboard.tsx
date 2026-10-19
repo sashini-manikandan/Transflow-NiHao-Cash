@@ -93,7 +93,7 @@ export default function Dashboard() {
         </div>
       </PageHeader>
 
-      <DemoDataBanner label={d.data_source.label} />
+      <DemoDataBanner label="Synthetic data — no bank account is connected." />
 
       {(flow.shortfall_detected ||
         d.upcoming_bills.total_base > d.available_balance.amount) && (
@@ -108,11 +108,6 @@ export default function Dashboard() {
                 {flow.shortfall_detected
                   ? `Shortfall of ${money(flow.largest_shortfall, currency)} on ${longDate(flow.first_shortfall_date)}`
                   : `Bills of ${money(d.upcoming_bills.total_base, currency)} exceed cash on hand`}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                {flow.shortfall_detected
-                  ? `Projected low of ${money(flow.minimum_balance, currency)}. Cut a duplicate subscription and time remittances after local bills clear.`
-                  : `Obligations in the next ${d.upcoming_bills.window_days} days outrun available balance. Hold or resize cross-border transfers until the gap closes.`}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -134,18 +129,13 @@ export default function Dashboard() {
         <StatCard
           label="Available balance"
           value={money(d.available_balance.amount, currency)}
-          sublabel={`Across ${d.available_balance.accounts.length} demo accounts`}
+          sublabel={`${d.available_balance.accounts.length} accounts`}
           basis={d.available_balance.basis}
-          note={
-            d.available_balance.excluded.length > 0
-              ? `${d.available_balance.excluded.length} account balance(s) excluded: no exchange rate.`
-              : undefined
-          }
         />
         <StatCard
           label={`Bills due in ${d.upcoming_bills.window_days} days`}
           value={money(d.upcoming_bills.total_base, currency)}
-          sublabel={`${d.upcoming_bills.count} scheduled obligations`}
+          sublabel={`${d.upcoming_bills.count} obligations`}
           basis={d.upcoming_bills.basis}
           tone={d.upcoming_bills.total_base > d.available_balance.amount ? 'warn' : 'neutral'}
         />
@@ -154,15 +144,13 @@ export default function Dashboard() {
           value={money(d.recurring_monthly.amount, currency)}
           sublabel={`${d.recurring_monthly.likely_count} likely · ${d.recurring_monthly.possible_count} possible`}
           basis={d.recurring_monthly.basis}
-          note={d.recurring_monthly.note}
         />
         <StatCard
           label="Potential savings"
           value={money(d.potential_savings.amount, currency)}
-          sublabel={`${d.potential_savings.option_count} options to review`}
+          sublabel={`${d.potential_savings.option_count} options`}
           basis={d.potential_savings.basis}
           tone="good"
-          note={d.potential_savings.note}
         />
       </div>
 
@@ -171,7 +159,7 @@ export default function Dashboard() {
         <Card
           className="xl:col-span-2"
           title="Projected cash flow"
-          subtitle={`Day-by-day balance to ${longDate(flowEnd)}, combining confirmed bills, projected subscription charges and expected income.`}
+          subtitle={`To ${longDate(flowEnd)}`}
           action={<BasisTag basis="estimate" />}
         >
           <div className="h-64 w-full">
@@ -257,7 +245,6 @@ export default function Dashboard() {
         <div className="space-y-6">
           <Card
             title="Next obligations"
-            subtitle="Confirmed bills with a known due date."
             action={<BasisTag basis="calculated" />}
           >
             {d.upcoming_bills.next.length === 0 ? (
@@ -300,7 +287,6 @@ export default function Dashboard() {
 
           <Card
             title="Price change alerts"
-            subtitle="Detected shifts in recurring charge amounts."
             action={<BasisTag basis="calculated" />}
           >
             {d.price_change_alerts.length === 0 ? (
@@ -344,7 +330,7 @@ export default function Dashboard() {
       <div className="grid gap-6 xl:grid-cols-3">
         <Card
           title="Spending by category"
-          subtitle="Last 30 days, converted to your reporting currency."
+          subtitle="Last 30 days"
           action={<BasisTag basis="calculated" />}
         >
           {categories.length === 0 ? (
@@ -403,7 +389,6 @@ export default function Dashboard() {
         <Card
           className="xl:col-span-2"
           title="Ranked recommendations"
-          subtitle="Ordered by urgency, estimated impact, confidence and your stated priorities."
         >
           {recommendations.loading && <LoadingPanel label="Loading recommendations" />}
           {recommendations.error && (
@@ -494,7 +479,7 @@ function RecommendationRow({ item }: { item: Recommendation }) {
         {item.priority_alignment > 0 && (
           <span className="text-accent">Matches a stated priority</span>
         )}
-        {item.suggested_action && <span>Needs your approval before anything happens</span>}
+        {item.suggested_action && <span>Needs your approval</span>}
       </div>
 
       <EvidenceDisclosure summary="basis and caveats">
