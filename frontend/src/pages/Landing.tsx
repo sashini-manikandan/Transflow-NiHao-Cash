@@ -13,7 +13,7 @@ const FEATURES = [
     widget: 'alert',
   },
   {
-    title: 'BillWise AI',
+    title: 'Tran$Flow AI',
     body: 'Ask in plain language. Every figure is pulled from a backend tool, not invented.',
     tint: 'bg-[#E7EEF2]',
     widget: 'ai',
@@ -32,7 +32,7 @@ const FAQ = [
     a: 'Not in this hackathon build. Sign up opens a demo account backed by synthetic student data — no passwords, no live banking.',
   },
   {
-    q: 'Is BillWise AI giving financial advice?',
+    q: 'Is Tran$Flow AI giving financial advice?',
     a: 'No. Replies are grounded on calculated demo figures. Treat them as product exploration, not advice.',
   },
   {
@@ -47,7 +47,7 @@ const FAQ = [
 
 /**
  * Marketing landing guided by fintech inspo (nav, hero, trust, features, FAQ)
- * but BillWise-branded: brand leads the hero, light shell, honest demo CTAs.
+ * but Tran$Flow-branded: brand leads the hero, light shell, honest demo CTAs.
  */
 export default function Landing() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
@@ -66,7 +66,7 @@ export default function Landing() {
               For students abroad
             </p>
             <p className="mt-6 font-display text-[clamp(3rem,8vw,4.75rem)] leading-[0.92] tracking-[-0.02em] text-stone-900">
-              BillWise
+              Tran$Flow
             </p>
             <h1 className="mt-5 max-w-md font-sans text-xl font-medium leading-snug text-stone-800 sm:text-2xl">
               See every obligation{' '}
@@ -74,7 +74,7 @@ export default function Landing() {
               your account.
             </h1>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-stone-600 sm:text-[0.95rem]">
-              Bills, subscriptions, and remittances in one place — with BillWise AI
+              Bills, subscriptions, and remittances in one place — with Tran$Flow AI
               grounded on the numbers.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -139,7 +139,7 @@ export default function Landing() {
       <section id="why" className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl text-center">
           <p className="inline-flex rounded-full border border-stone-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">
-            Why BillWise
+            Why Tran$Flow
           </p>
           <h2 className="mt-4 font-display text-3xl text-stone-900 sm:text-4xl">
             Obligations for students abroad, simplified.
@@ -176,9 +176,9 @@ export default function Landing() {
           visual="subs"
         />
         <FeatureRow
-          eyebrow="BillWise AI"
+          eyebrow="Tran$Flow AI"
           title="Ask the question. See the tools behind the answer."
-          body="Every assistant reply is labelled BillWise AI. Figures come from backend tools — the model never does the arithmetic."
+          body="Every assistant reply is labelled Tran$Flow AI. Figures come from backend tools — the model never does the arithmetic."
           align="left"
           visual="assistant"
         />
@@ -260,7 +260,7 @@ export default function Landing() {
               Create your demo account
             </p>
             <p className="mt-3 text-sm text-stone-600">
-              Pick a student story and open the full product — Overview through BillWise AI.
+              Pick a student story and open the full product — Overview through Tran$Flow AI.
             </p>
           </div>
           <Link
@@ -275,7 +275,7 @@ export default function Landing() {
       <footer className="border-t border-stone-200 px-5 py-10 sm:px-8 lg:px-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:flex-row sm:justify-between">
           <div>
-            <p className="font-display text-xl text-stone-900">BillWise</p>
+            <p className="font-display text-xl text-stone-900">Tran$Flow</p>
             <p className="mt-2 max-w-xs text-xs leading-relaxed text-stone-500">
               Obligations for students abroad. Demo product · synthetic data · not
               financial advice.
@@ -292,7 +292,7 @@ export default function Landing() {
                 </li>
                 <li>
                   <a href="/#why" className="hover:text-stone-800">
-                    Why BillWise
+                    Why Tran$Flow
                   </a>
                 </li>
                 <li>
@@ -397,7 +397,7 @@ function FeatureWidget({ kind }: { kind: string }) {
     return (
       <div className="rounded-2xl border border-sky-200/80 bg-white/80 p-4">
         <p className="text-[10px] font-semibold uppercase tracking-wider text-sky-700">
-          BillWise AI
+          Tran$Flow AI
         </p>
         <p className="mt-2 text-sm text-stone-800">“What bills hit before my remittance?”</p>
         <div className="mt-3 h-2 w-full rounded-full bg-stone-100">
@@ -461,7 +461,7 @@ function ProductMock({ kind }: { kind: 'forecast' | 'subs' | 'assistant' }) {
       </div>
       <div className="rounded-2xl rounded-br-md border border-stone-200 bg-stone-50 px-4 py-3">
         <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-800">
-          BillWise AI
+          Tran$Flow AI
         </p>
         <p className="mt-2 text-sm text-stone-700">
           Rent and tuition clear first. Remittance is safer after the 5th.

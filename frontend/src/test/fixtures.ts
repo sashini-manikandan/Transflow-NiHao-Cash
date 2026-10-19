@@ -380,5 +380,5 @@ export const chatResponse: ChatResponse = {
   iterations: 1,
   truncated: false,
   disclaimer:
-    'BillWise AI works from synthetic demo data and simulated exchange rates. It is not financial advice, and no real account is connected.',
+    'Tran$Flow AI works from synthetic demo data and simulated exchange rates. It is not financial advice, and no real account is connected.',
 }

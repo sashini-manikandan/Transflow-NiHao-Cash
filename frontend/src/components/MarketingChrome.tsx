@@ -15,14 +15,14 @@ export function MarketingChrome({
         <header className="sticky top-0 z-30 border-b border-stone-200/80 bg-[#F7F8F5]/90 backdrop-blur-md">
           <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
             <Link to="/" className="font-display text-2xl leading-none text-stone-900">
-              BillWise
+              Tran$Flow
             </Link>
             <nav className="hidden items-center gap-7 text-sm text-stone-600 md:flex" aria-label="Marketing">
               <a href="/#product" className="hover:text-stone-900">
                 Product
               </a>
               <a href="/#why" className="hover:text-stone-900">
-                Why BillWise
+                Why Tran$Flow
               </a>
               <a href="/#faq" className="hover:text-stone-900">
                 FAQ

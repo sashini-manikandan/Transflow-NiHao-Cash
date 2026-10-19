@@ -65,7 +65,7 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     })
   } catch {
     throw new ApiError(
-      'Could not reach the BillWise backend. Is it running on port 8000?',
+      'Could not reach the Tran$Flow backend. Is it running on port 8000?',
       0,
     )
   }

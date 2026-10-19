@@ -1,4 +1,4 @@
-"""BillWise AI - FastAPI application entrypoint."""
+"""Tran$Flow AI - FastAPI application entrypoint."""
 
 from __future__ import annotations
 
@@ -55,7 +55,7 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(
-        title="BillWise AI",
+        title="Tran$Flow AI",
         description=DESCRIPTION,
         version="1.0.0",
         lifespan=lifespan,

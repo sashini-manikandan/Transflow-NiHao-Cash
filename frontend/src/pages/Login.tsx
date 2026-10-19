@@ -91,7 +91,7 @@ export default function Login() {
             disabled={!active}
             onClick={continueToApp}
           >
-            Enter BillWise
+            Enter Tran$Flow
           </button>
           <Link
             to="/"

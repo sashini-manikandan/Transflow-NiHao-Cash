@@ -16,7 +16,7 @@ describe('AI assistant', () => {
 
   it('shows a short how-it-works panel instead of raw tool schemas', async () => {
     render(<Assistant />)
-    expect(await screen.findByText('How BillWise AI works')).toBeInTheDocument()
+    expect(await screen.findByText('How Tran$Flow AI works')).toBeInTheDocument()
     expect(screen.getByText(/not free database access/i)).toBeInTheDocument()
     expect(screen.getByText(/drafts until you confirm/i)).toBeInTheDocument()
     expect(screen.queryByText('get_upcoming_bills')).not.toBeInTheDocument()
@@ -59,7 +59,7 @@ describe('AI assistant', () => {
     expect(screen.getAllByText('Estimate').length).toBeGreaterThan(0)
   })
 
-  it('labels replies as BillWise AI without exposing the underlying model', async () => {
+  it('labels replies as Tran$Flow AI without exposing the underlying model', async () => {
     vi.spyOn(api, 'chat').mockResolvedValue(chatResponse)
     const user = userEvent.setup()
     render(<Assistant />)
@@ -67,7 +67,7 @@ describe('AI assistant', () => {
     await user.click(
       await screen.findByRole('button', { name: /what bills do i have coming up/i }),
     )
-    expect(await screen.findByText('BillWise AI')).toBeInTheDocument()
+    expect(await screen.findByText('Tran$Flow AI')).toBeInTheDocument()
     expect(screen.queryByText(/deterministic/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/gpt/i)).not.toBeInTheDocument()
     expect(screen.getAllByText(/not financial advice/i).length).toBeGreaterThan(0)

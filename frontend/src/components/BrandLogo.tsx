@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 type Tone = 'light' | 'dark'
 
 /**
- * BillWise mark + wordmark. SVG stays crisp in sidebar and marketing chrome.
+ * Tran$Flow mark + wordmark. SVG stays crisp in sidebar and marketing chrome.
  */
 export function BrandLogo({
   to = '/',
@@ -36,9 +36,9 @@ export function BrandLogo({
         aria-hidden="true"
       />
       {showWordmark && (
-        <span className={`font-display leading-none ${type}`}>BillWise</span>
+        <span className={`font-display leading-none ${type}`}>Tran$Flow</span>
       )}
-      <span className="sr-only">BillWise home</span>
+      <span className="sr-only">Tran$Flow home</span>
     </Link>
   )
 }
@@ -48,7 +48,7 @@ export function BrandMark({ className = 'h-8 w-8' }: { className?: string }) {
   return (
     <img
       src="/logo.svg"
-      alt="BillWise"
+      alt="Tran$Flow"
       width={32}
       height={32}
       className={`shrink-0 rounded-lg ${className}`}

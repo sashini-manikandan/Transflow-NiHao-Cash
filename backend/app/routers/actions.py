@@ -192,8 +192,8 @@ def preview_action(
     summary = (
         f"Preview only — nothing has been cancelled.\n"
         + "\n".join(lines)
-        + "\n\nIf you approve this, BillWise records your decision and shows you "
-        "the steps to cancel with the merchant. BillWise cannot contact the "
+        + "\n\nIf you approve this, Tran$Flow records your decision and shows you "
+        "the steps to cancel with the merchant. Tran$Flow cannot contact the "
         "merchant or stop a payment on your behalf."
     )
 

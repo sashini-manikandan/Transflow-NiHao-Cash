@@ -111,7 +111,7 @@ function AppShell() {
       >
         <div className="px-5 pb-3 pt-6">
           <p className="font-display text-[1.9rem] leading-none tracking-[-0.02em] text-ink">
-            BillWise
+            Tran$Flow
           </p>
           <p className="mt-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent/85">
             Student finance abroad
@@ -139,7 +139,7 @@ function AppShell() {
             <p className="label-xs">Assistant</p>
             <p className="mt-1.5 flex items-center gap-2 text-sm text-ink">
               <AssistantIcon className="h-4 w-4 shrink-0 text-accent" />
-              BillWise AI
+              Tran$Flow AI
             </p>
           </div>
 
@@ -199,7 +199,7 @@ function AppShell() {
           >
             Menu
           </button>
-          <span className="font-display text-lg">BillWise</span>
+          <span className="font-display text-lg">Tran$Flow</span>
         </header>
 
         <main className="min-w-0 flex-1 px-4 py-7 sm:px-7 lg:px-10 lg:py-9">

@@ -146,7 +146,7 @@ export default function Assistant() {
                     <path d="m5.6 5.6 1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8" />
                   </svg>
                 </span>
-                <span role="status">BillWise AI is thinking…</span>
+                <span role="status">Tran$Flow AI is thinking…</span>
               </div>
             )}
             <div ref={endRef} />
@@ -178,14 +178,14 @@ export default function Assistant() {
               </button>
             </div>
             <p className="mt-2 text-[11px] text-ink-faint">
-              Never share bank passwords or card details. BillWise cannot move money.
+              Never share bank passwords or card details. Tran$Flow cannot move money.
             </p>
           </form>
         </div>
       </div>
 
       <aside className="space-y-6">
-        <Card title="How BillWise AI works">
+        <Card title="How Tran$Flow AI works">
           <ul className="space-y-2.5 text-sm leading-relaxed text-ink-muted">
             <li>
               Uses a <span className="text-ink">fixed tool set</span> — not free database
@@ -238,7 +238,7 @@ function AssistantMessage({ message }: { message: Message }) {
         >
           {response && (
             <div className="mb-2 flex flex-wrap items-center gap-2">
-              <Pill tone="info">BillWise AI</Pill>
+              <Pill tone="info">Tran$Flow AI</Pill>
               {response.tool_calls.length > 0 && (
                 <Pill tone="good">
                   {response.tool_calls.length} tool call

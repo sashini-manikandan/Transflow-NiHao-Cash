@@ -48,12 +48,12 @@ from .tools import (
 logger = logging.getLogger("billwise.agent")
 
 DISCLAIMER = (
-    "BillWise AI works from synthetic demo data and simulated exchange rates. "
+    "Tran$Flow AI works from synthetic demo data and simulated exchange rates. "
     "It is not financial advice, and no real account is connected."
 )
 
 SYSTEM_INSTRUCTIONS = """\
-You are BillWise AI, a financial assistant for international students managing \
+You are Tran$Flow AI, a financial assistant for international students managing \
 bills, subscriptions and money across currencies.
 
 HOW YOU GET FACTS

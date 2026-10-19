@@ -1,6 +1,6 @@
 # Security Self-Assessment Report
 
-**Product:** BillWise (Transflow · NiHao Cash)  
+**Product:** Tran$Flow (Transflow · NiHao Cash)  
 **Track:** Topic C — Cross-border & Student Finance Assistant  
 **Build type:** Hackathon MVP with synthetic sandbox accounts  
 **Last updated:** October 2026
@@ -11,7 +11,7 @@ This document satisfies submission item **05 — Security self-assessment report
 
 ## 1. Scope and honesty
 
-BillWise is a **demo** financial obligations assistant. It does **not**:
+Tran$Flow is a **demo** financial obligations assistant. It does **not**:
 
 - connect to a live bank or card network  
 - move real money  
@@ -91,7 +91,7 @@ Caps: max tool iterations and max tool calls per request (configurable; defaults
 | Financial advice | Product disclaimer: not advice; demo projections only |
 | Data protection | No live customer data processed; sandbox accounts only |
 | Payments / remittance | Simulation and education only; no executable transfers |
-| Model transparency | Answers labelled BillWise AI; tool traces available in UI |
+| Model transparency | Answers labelled Tran$Flow AI; tool traces available in UI |
 | Open source / IP | Team-authored code; dependencies used under their licences |
 
 We do **not** claim PCI-DSS, banking licence, or production SOC2 readiness. Claiming those for a sandbox MVP would itself be a compliance failure.
@@ -147,4 +147,4 @@ Frontend tests cover assistant labelling and provenance display without exposing
 
 ## 8. Summary for reviewers
 
-BillWise implements **clear permission tiers**, a **least-privilege tool-calling agent**, **server-side user scoping**, **secret isolation**, **rate limiting**, **confirm-gated mutations**, and an **honest known-risk list**. Residual risks are dominated by the intentional demo auth model and synthetic data — appropriate for Topic C sandbox execution, and explicitly not claimed as production banking security.
+Tran$Flow implements **clear permission tiers**, a **least-privilege tool-calling agent**, **server-side user scoping**, **secret isolation**, **rate limiting**, **confirm-gated mutations**, and an **honest known-risk list**. Residual risks are dominated by the intentional demo auth model and synthetic data — appropriate for Topic C sandbox execution, and explicitly not claimed as production banking security.
