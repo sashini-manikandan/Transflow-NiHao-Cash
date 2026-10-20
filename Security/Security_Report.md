@@ -1,4 +1,4 @@
-# Security Assessment Report: Transflow-NiHao-Cash
+# Security Assessment Report: Tran$flow-NiHao-Cash
 
 **Assessment date:** 19 October 2026  
 **Assessment type:** Targeted automated tests, manual prompt-injection checks, and source-code review
